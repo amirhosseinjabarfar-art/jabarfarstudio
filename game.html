@@ -1,0 +1,179 @@
+
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#090817">
+<title>صفحه بازی | استودیو جبارفر</title>
+<link href="https://fonts.googleapis.com/css2?family=Lalezar&family=Vazirmatn:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box}
+:root{--purple:#a855f7;--cyan:#22d3ee;--muted:#aaa7c7}
+body{margin:0;background:#090817;color:#f8f7ff;font-family:Vazirmatn,sans-serif;min-height:100vh;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+.bg{position:fixed;inset:0;z-index:-1;pointer-events:none;background:radial-gradient(ellipse at 15% 15%,#7529a633,transparent 45%),radial-gradient(ellipse at 90% 70%,#087dba25,transparent 40%)}
+.grid{position:fixed;inset:0;z-index:-1;pointer-events:none;background-image:linear-gradient(#ffffff06 1px,transparent 1px),linear-gradient(90deg,#ffffff06 1px,transparent 1px);background-size:40px 40px}
+.glass{background:#15122bc9;border:1px solid #ffffff18;backdrop-filter:blur(22px);-webkit-backdrop-filter:blur(22px);box-shadow:0 20px 60px #0003}
+header{width:min(1100px,calc(100% - 28px));margin:15px auto;padding:14px 18px;border-radius:18px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.brand{font:25px Lalezar;color:#fff}
+header a:last-child{font-size:13px;color:#d8c2ff}
+main{width:min(1000px,calc(100% - 28px));margin:45px auto 80px}
+.hero{border-radius:28px;overflow:hidden;text-align:center;padding:48px 22px;position:relative}
+.icon{font-size:80px;filter:drop-shadow(0 0 30px var(--glow,#a855f7));animation:float 4s ease-in-out infinite}
+@keyframes float{50%{transform:translateY(-10px) rotate(3deg)}}
+h1,h2{font-family:Lalezar;font-weight:400}
+h1{font-size:clamp(40px,7vw,68px);margin:15px 0}
+p{line-height:2;color:var(--muted);font-size:14px}
+.status{display:inline-block;padding:7px 13px;border-radius:30px;border:1px solid #ffffff20;background:#ffffff08;font-size:12px}
+.actions{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:25px}
+.btn{display:inline-flex;justify-content:center;padding:12px 18px;border-radius:13px;background:linear-gradient(120deg,#9333ea,#5b35c8);border:1px solid #ffffff20;color:white;transition:.25s}
+.btn:hover{transform:translateY(-3px);box-shadow:0 10px 30px #9333ea44}
+.btn.alt{background:#ffffff08}
+.details{display:grid;grid-template-columns:1fr 1fr;gap:15px;margin-top:20px}
+.box{padding:23px;border-radius:20px}
+.box h2{font-size:25px;margin:0}
+.box p{margin-bottom:0}
+.note{margin-top:18px;padding:18px;border-radius:16px;font-size:12px;line-height:2;color:#c9c3e0}
+.reveal{opacity:0;filter:blur(12px);transform:translateY(20px);transition:.8s}
+.reveal.show{opacity:1;filter:blur(0);transform:translateY(0)}
+footer{text-align:center;padding:20px;color:#8984a5;font-size:12px}
+@media(max-width:650px){.details{grid-template-columns:1fr}main{margin-top:25px}.hero{padding:35px 18px}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.reveal{opacity:1;filter:none;transform:none}}
+</style>
+</head>
+<body>
+<div class="bg"></div><div class="grid"></div>
+<header class="glass">
+  <a class="brand" href="index.html">استودیو جبارفر ✦</a>
+  <a href="index.html#games">← بازگشت به بازی‌ها</a>
+</header>
+
+<main>
+  <section class="hero glass reveal" id="hero">
+    <div class="icon" id="icon">🎮</div>
+    <div class="status" id="status">اطلاعات پروژه</div>
+    <h1 id="title">صفحه بازی</h1>
+    <p id="description"></p>
+    <div class="actions">
+      <a class="btn" id="play" href="index.html#games">ورود به بازی ↗</a>
+      <a class="btn alt" href="index.html#games">مشاهده همه بازی‌ها</a>
+    </div>
+  </section>
+
+  <div class="details">
+    <section class="box glass reveal">
+      <h2>درباره این پروژه</h2>
+      <p id="about"></p>
+    </section>
+    <section class="box glass reveal">
+      <h2>وضعیت انتشار</h2>
+      <p id="release"></p>
+    </section>
+  </div>
+  <div class="note glass reveal" id="notice">اطلاعات این صفحه توسط استودیو جبارفر ارائه می‌شود.</div>
+</main>
+
+<footer>ساخته‌شده توسط امیر حسین جبارفر · <span id="year"></span></footer>
+
+<script>
+const games = {
+  sheersho:{
+    title:'شعرشو',icon:'🎭',status:'منتشرشده · تحت وب',
+    description:'وارد دنیای شعرشو شو؛ تجربه‌ای سرگرم‌کننده برای لذت‌بردن از شعر و خلاقیت.',
+    about:'شعرشو یکی از پروژه‌های استودیو جبارفر است. برای اجرای بازی، از دکمه ورود استفاده کن.',
+    release:'نسخه تحت وب منتشر شده است.',
+    notice:'برای بازی‌کردن به نسخه اصلی پروژه هدایت می‌شوی.',
+    url:'https://amirhosseinjabarfar-art.github.io/sheersho/'
+  },
+  robofeckr:{
+    title:'روبوفکر',icon:'🤖',status:'منتشرشده · تحت وب',
+    description:'پروژه‌ای خلاقانه در مجموعه استودیو جبارفر.',
+    about:'این صفحه، معرفی اختصاصی پروژه روبوفکر است و مسیر ورود به سایت اصلی را در اختیار تو می‌گذارد.',
+    release:'نسخه تحت وب در دسترس است.',
+    notice:'جزئیات دقیق قابلیت‌ها را در سایت اصلی پروژه مشاهده کن.',
+    url:'https://amirhosseinjabarfar-art.github.io/robofeckr/'
+  },
+  amirverse:{
+    title:'امیر ورس',icon:'🌌',status:'منتشرشده · تحت وب',
+    description:'جهان پروژه‌های بازی و تجربه‌های دیجیتال استودیو جبارفر.',
+    about:'امیر ورس یکی از پروژه‌های این مجموعه است. برای مشاهده نسخه اصلی، دکمه ورود را بزن.',
+    release:'نسخه تحت وب در دسترس است.',
+    notice:'ممکن است امکانات پروژه در طول زمان تغییر کند.',
+    url:'https://amirhosseinjabarfar-art.github.io/amir-game/'
+  },
+  khanevadehland:{
+    title:'خانواده لند',icon:'🎲',status:'در دست ساخت',
+    description:'یک دنیای سرگرمی برای بازی‌های گروهی و دورهمی.',
+    about:'خانواده لند به‌عنوان پروژه‌ای در حال ساخت معرفی شده است.',
+    release:'هنوز زمان انتشار قطعی اعلام نشده است.',
+    notice:'این پروژه هنوز آماده انتشار نیست؛ لینک ورود هنگام آماده‌شدن نسخه نهایی اضافه می‌شود.',
+    url:''
+  },
+  amirracing:{
+    title:'امیر ریسینگ',icon:'🏎️',status:'در دست ساخت',
+    description:'پروژه‌ای با حال‌وهوای سرعت، رانندگی و رقابت.',
+    about:'امیر ریسینگ یکی از ایده‌های بازی در مجموعه استودیو جبارفر است.',
+    release:'اطلاعات انتشار نسخه نهایی بعداً اعلام خواهد شد.',
+    notice:'تا زمان انتشار نسخه قابل‌بازی، این صفحه فقط معرفی پروژه است.',
+    url:''
+  },
+  studioapp:{
+    title:'اپلیکیشن استودیو',icon:'📱',status:'به‌زودی',
+    description:'نسخه اپلیکیشن استودیو جبارفر؛ خبرهای انتشار در همین صفحه اعلام می‌شوند.',
+    about:'هدف این پروژه، فراهم‌کردن دسترسی آسان‌تر به اطلاعات و پروژه‌های استودیو است.',
+    release:'نسخه اپلیکیشن هنوز منتشر نشده است.',
+    notice:'هیچ فایل نصبی منتشر نشده؛ مراقب لینک‌های ناشناس باشید.',
+    url:''
+  }
+};
+
+const id = new URLSearchParams(location.search).get('id') || '';
+const game = games[id];
+const $ = s => document.querySelector(s);
+
+if(!game){
+  $('#title').textContent='پروژه پیدا نشد';
+  $('#icon').textContent='🔎';
+  $('#description').textContent='این شناسه بازی معتبر نیست یا هنوز برای آن صفحه‌ای ثبت نشده است.';
+  $('#about').textContent='به فهرست بازی‌ها برگرد و یکی از پروژه‌ها را انتخاب کن.';
+  $('#release').textContent='پروژه‌ای با این شناسه در فهرست موجود نیست.';
+  $('#notice').textContent='برای مشاهده پروژه‌ها از صفحه اصلی استفاده کن.';
+  $('#status').textContent='صفحه نامعتبر';
+  $('#play').style.display='none';
+  document.title='پروژه پیدا نشد | استودیو جبارفر';
+}else{
+  document.title=game.title+' | استودیو جبارفر';
+  $('#title').textContent=game.title;
+  $('#icon').textContent=game.icon;
+  $('#status').textContent=game.status;
+  $('#description').textContent=game.description;
+  $('#about').textContent=game.about;
+  $('#release').textContent=game.release;
+  $('#notice').textContent=game.notice;
+  $('#hero').style.setProperty('--glow',id==='amirracing'?'#f97316':id==='robofeckr'?'#22d3ee':'#a855f7');
+  if(game.url){
+    $('#play').href=game.url;
+    $('#play').target='_blank';
+    $('#play').rel='noopener noreferrer';
+  }else{
+    $('#play').textContent='به‌زودی منتشر می‌شود';
+    $('#play').removeAttribute('href');
+    $('#play').style.opacity='.65';
+    $('#play').style.cursor='default';
+  }
+}
+
+$('#year').textContent=new Date().getFullYear();
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){e.target.classList.add('show');obs.unobserve(e.target)}
+  });
+},{threshold:.1});
+document.querySelectorAll('.reveal').forEach((el,i)=>{
+  el.style.transitionDelay=(i*100)+'ms';
+  obs.observe(el);
+});
+</script>
+</body>
+</html>
