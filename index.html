@@ -4,202 +4,830 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#080b18">
-<meta name="description" content="استودیو جبارفر؛ دنیایی از بازی‌ها و پروژه‌های خلاقانه">
-<title>استودیو جبارفر | خانه خلاقیت</title>
-<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<meta name="theme-color" content="#090b18">
+<meta name="description" content="استودیو جبارفر؛ دنیایی از بازی‌ها و پروژه‌های خلاقانه امیر حسین جبارفر">
+<title>استودیو جبارفر | دنیای بازی‌ها</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lalezar&display=swap" rel="stylesheet">
+
 <style>
-:root{--bg:#080b18;--panel:#121831;--text:#f7f7ff;--muted:#aab3d1;--purple:#9b5cff;--cyan:#42e8ff;--pink:#ff58c8}
+:root{
+  --bg:#090b18;
+  --panel:rgba(20,25,49,.82);
+  --white:#fff;
+  --muted:#b4bbd5;
+  --purple:#9c62ff;
+  --cyan:#4beaff;
+  --pink:#ff64ce;
+  --border:rgba(255,255,255,.12);
+}
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{margin:0;background:radial-gradient(ellipse at 10% 10%,#46208040,transparent 35%),radial-gradient(ellipse at 90% 40%,#00c8ff18,transparent 35%),var(--bg);color:var(--text);font-family:Vazirmatn,sans-serif;overflow-x:hidden}
+body{
+  margin:0;
+  min-height:100vh;
+  background:
+    radial-gradient(ellipse at 12% 8%,rgba(139,75,255,.19),transparent 38%),
+    radial-gradient(ellipse at 90% 35%,rgba(35,210,255,.12),transparent 35%),
+    radial-gradient(ellipse at 45% 100%,rgba(255,74,190,.09),transparent 42%),
+    var(--bg);
+  color:var(--white);
+  font-family:'Lalezar',cursive;
+  overflow-x:hidden;
+}
 a{color:inherit;text-decoration:none}
+button{font:inherit}
+button,a{-webkit-tap-highlight-color:transparent}
+button:focus-visible,a:focus-visible{outline:2px solid var(--cyan);outline-offset:4px}
+#particles{
+  position:fixed;
+  inset:0;
+  width:100%;
+  height:100%;
+  z-index:-2;
+  pointer-events:none;
+}
+.ambient{
+  position:fixed;
+  z-index:-1;
+  width:270px;
+  height:270px;
+  border-radius:50%;
+  filter:blur(100px);
+  opacity:.17;
+  pointer-events:none;
+  animation:ambient 12s ease-in-out infinite alternate;
+}
+.ambient.a{top:10%;right:-130px;background:var(--purple)}
+.ambient.b{bottom:5%;left:-130px;background:var(--cyan);animation-delay:-5s}
+@keyframes ambient{to{transform:translate(35px,-35px) scale(1.2)}}
 .container{width:min(1120px,92%);margin:auto}
-.nav{position:sticky;top:10px;z-index:10;width:min(1120px,94%);margin:10px auto 0;padding:12px 16px;display:flex;align-items:center;justify-content:space-between;gap:12px;border:1px solid #ffffff20;border-radius:19px;background:#0a0d1ddd;backdrop-filter:blur(20px)}
-.brand{display:flex;align-items:center;gap:10px;font-weight:900}
-.logo{width:43px;height:43px;display:grid;place-items:center;border-radius:14px;background:linear-gradient(135deg,var(--purple),var(--cyan));font-size:23px;box-shadow:0 0 22px #9b5cff55}
-.brand small{display:block;font-size:10px;color:var(--muted);font-weight:500}
-.navlinks{display:flex;gap:20px;font-size:12px;color:#cbd1e8}
+
+/* نوار بالای سایت */
+.navbar{
+  position:sticky;
+  top:10px;
+  z-index:50;
+  width:min(1120px,94%);
+  margin:10px auto 0;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  padding:11px 15px;
+  border:1px solid var(--border);
+  border-radius:19px;
+  background:rgba(10,13,29,.85);
+  backdrop-filter:blur(22px);
+  box-shadow:0 12px 35px #0003;
+}
+.brand{display:flex;align-items:center;gap:10px;font-size:19px;white-space:nowrap}
+.brand-icon{
+  width:43px;height:43px;
+  display:grid;place-items:center;
+  border-radius:14px;
+  font-size:25px;
+  background:linear-gradient(135deg,var(--purple),var(--cyan));
+  box-shadow:0 0 22px #9c62ff55;
+}
+.brand small{display:block;font-size:11px;color:var(--muted)}
+.navlinks{display:flex;gap:20px;font-size:15px;color:#d7dcef}
 .navlinks a:hover{color:var(--cyan)}
-.navbutton,.button{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:12px 17px;border-radius:12px;font-weight:800;font-size:12px;transition:.25s}
-.navbutton,.primary{background:linear-gradient(120deg,#9254ff,#6247eb)}
-.button:hover,.navbutton:hover{transform:translateY(-3px);filter:brightness(1.15)}
-.hero{min-height:590px;padding:90px 0 65px;display:grid;place-items:center;text-align:center}
-.hero-content{max-width:850px}
-.pill{display:inline-flex;align-items:center;gap:8px;padding:8px 14px;border:1px solid #42e8ff40;background:#42e8ff0a;color:#b5f7ff;border-radius:30px;font-size:12px;margin-bottom:20px}
-.dot{width:7px;height:7px;background:#58ffc7;border-radius:50%;box-shadow:0 0 10px #58ffc7}
-h1{font-size:clamp(34px,7vw,68px);line-height:1.6;margin:0;font-weight:900;letter-spacing:-1.5px}
-.welcome{opacity:0;filter:blur(17px);transform:translateY(75px);animation:welcome 1.35s cubic-bezier(.16,1,.3,1) .2s forwards}
-.gradient{display:block;color:transparent;background:linear-gradient(100deg,#fff,#bba0ff,#53eaff,#ff8bdc,#fff);background-size:250% auto;background-clip:text;-webkit-background-clip:text;animation:flow 7s linear infinite;filter:drop-shadow(0 0 25px #9b5cff40)}
-@keyframes welcome{to{opacity:1;filter:blur(0);transform:translateY(0)}}
-@keyframes flow{to{background-position:250% center}}
-.hero p{max-width:650px;margin:18px auto;color:var(--muted);font-size:14px;line-height:2.2;animation:fade .9s 1s both}
-.hero-actions{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-top:25px;animation:fade .9s 1.2s both}
-.secondary{background:#ffffff08;border:1px solid #ffffff24}
-@keyframes fade{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
-.stats{display:flex;justify-content:center;gap:35px;flex-wrap:wrap;margin-top:40px;animation:fade .9s 1.35s both}
-.stat strong{display:block;font-size:24px;background:linear-gradient(120deg,#fff,var(--cyan));background-clip:text;-webkit-background-clip:text;color:transparent}
-.stat span{font-size:11px;color:#8f9aba}
-.section{padding:50px 0}
-.heading{margin-bottom:25px}
-.kicker{color:var(--cyan);font-size:11px;font-weight:800;letter-spacing:1px}
-h2{font-size:clamp(25px,4vw,35px);margin:8px 0;font-weight:900}
-.sub{color:var(--muted);font-size:13px;line-height:2}
-.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:19px}
-.card{--accent:#9b5cff;position:relative;overflow:hidden;padding:24px;border:1px solid #ffffff19;border-radius:23px;background:linear-gradient(145deg,#171d3bcc,#0d1228e8);transition:.3s}
-.card:before{content:"";position:absolute;width:180px;height:180px;left:-75px;top:-90px;border-radius:50%;background:var(--accent);filter:blur(70px);opacity:.16;pointer-events:none}
-.card:hover{transform:translateY(-6px);border-color:color-mix(in srgb,var(--accent),transparent 45%);box-shadow:0 20px 50px #0005}
-.card-top{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:18px}
-.gameicon{width:62px;height:62px;border-radius:18px;display:grid;place-items:center;font-size:30px;background:color-mix(in srgb,var(--accent),transparent 88%);border:1px solid color-mix(in srgb,var(--accent),transparent 65%)}
-.badge{padding:7px 10px;border-radius:9px;background:#51f5c10e;border:1px solid #51f5c133;color:#aaffdc;font-size:10px}
-.card h3{font-size:22px;margin:0 0 9px}
-.card p{min-height:53px;color:var(--muted);font-size:12px;line-height:2.1;margin:0}
-.tags{display:flex;gap:7px;flex-wrap:wrap;margin:17px 0 21px}
-.tags span{font-size:10px;color:#c9d0e7;padding:6px 9px;border-radius:8px;background:#ffffff08;border:1px solid #ffffff0b}
-.card-link{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:13px 14px;border:1px solid color-mix(in srgb,var(--accent),transparent 70%);border-radius:12px;background:color-mix(in srgb,var(--accent),transparent 90%);font-size:12px;font-weight:800;transition:.25s}
+.nav-cta{
+  border:0;
+  padding:10px 15px;
+  border-radius:12px;
+  background:linear-gradient(120deg,var(--purple),#6348eb);
+  color:white;
+  cursor:pointer;
+  font-size:15px;
+  transition:.25s;
+}
+.nav-cta:hover{transform:translateY(-3px);box-shadow:0 0 25px #9c62ff55}
+
+/* صفحه اصلی */
+.page{display:none;animation:pageIn .45s ease both}
+.page.active{display:block}
+@keyframes pageIn{
+  from{opacity:0;transform:translateY(12px);filter:blur(5px)}
+  to{opacity:1;transform:translateY(0);filter:blur(0)}
+}
+.hero{
+  min-height:600px;
+  padding:90px 0 70px;
+  display:grid;
+  place-items:center;
+  text-align:center;
+}
+.hero-content{max-width:900px;width:100%}
+.pill{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding:8px 15px;
+  border:1px solid #4beaff40;
+  border-radius:40px;
+  color:#b7f7ff;
+  background:#4beaff09;
+  font-size:15px;
+  margin-bottom:22px;
+  animation:fadeUp .8s .1s both;
+}
+.dot{
+  width:8px;height:8px;
+  background:#56f6c3;
+  border-radius:50%;
+  box-shadow:0 0 12px #56f6c3;
+  animation:blink 1.5s infinite;
+}
+@keyframes blink{50%{opacity:.4;transform:scale(.7)}}
+.welcome{
+  margin:0;
+  font-size:clamp(37px,7vw,78px);
+  line-height:1.55;
+  font-weight:400;
+  opacity:0;
+  filter:blur(18px);
+  transform:translateY(90px);
+  animation:welcomeIn 1.4s cubic-bezier(.16,1,.3,1) .25s forwards;
+}
+@keyframes welcomeIn{
+  0%{opacity:0;filter:blur(18px);transform:translateY(90px)}
+  70%{opacity:1;filter:blur(2px)}
+  100%{opacity:1;filter:blur(0);transform:translateY(0)}
+}
+.gradient{
+  display:block;
+  color:transparent;
+  background:linear-gradient(100deg,#fff,#c3a6ff,#53edff,#ff8cdd,#fff);
+  background-size:250% auto;
+  background-clip:text;
+  -webkit-background-clip:text;
+  filter:drop-shadow(0 0 24px #9c62ff35);
+  animation:gradientFlow 7s linear infinite;
+}
+@keyframes gradientFlow{to{background-position:250% center}}
+.hero-description{
+  max-width:690px;
+  margin:20px auto 0;
+  color:var(--muted);
+  font-size:19px;
+  line-height:2.1;
+  animation:fadeUp .8s 1s both;
+}
+.hero-buttons{
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
+  gap:12px;
+  margin-top:28px;
+  animation:fadeUp .8s 1.2s both;
+}
+.btn{
+  display:inline-flex;
+  justify-content:center;
+  align-items:center;
+  gap:9px;
+  padding:13px 21px;
+  border:1px solid transparent;
+  border-radius:14px;
+  cursor:pointer;
+  font-size:16px;
+  transition:transform .25s,box-shadow .25s,background .25s;
+}
+.btn:hover{transform:translateY(-4px)}
+.btn-primary{
+  color:white;
+  background:linear-gradient(120deg,#9558ff,#6348e8);
+  box-shadow:0 8px 28px #8c53ff30;
+}
+.btn-primary:hover{box-shadow:0 10px 35px #8c53ff60}
+.btn-secondary{
+  color:white;
+  border-color:#ffffff24;
+  background:#ffffff08;
+}
+.btn-secondary:hover{border-color:#4beaff70}
+.stats{
+  display:flex;
+  justify-content:center;
+  gap:38px;
+  flex-wrap:wrap;
+  margin-top:45px;
+  animation:fadeUp .8s 1.4s both;
+}
+.stat strong{
+  display:block;
+  font-size:30px;
+  color:transparent;
+  background:linear-gradient(120deg,#fff,var(--cyan));
+  background-clip:text;
+  -webkit-background-clip:text;
+}
+.stat span{font-size:14px;color:#98a3c3}
+@keyframes fadeUp{
+  from{opacity:0;transform:translateY(18px)}
+  to{opacity:1;transform:translateY(0)}
+}
+
+/* عنوان بخش‌ها */
+.section{padding:48px 0}
+.section-heading{margin-bottom:27px}
+.kicker{font-size:14px;color:var(--cyan);letter-spacing:1px}
+.section-title{font-size:34px;margin:7px 0}
+.section-subtitle{font-size:16px;color:var(--muted);line-height:2}
+
+/* کارت بازی‌ها */
+.games-grid{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:20px;
+}
+.game-card{
+  --accent:#9c62ff;
+  position:relative;
+  overflow:hidden;
+  min-width:0;
+  padding:25px;
+  border:1px solid var(--border);
+  border-radius:23px;
+  background:linear-gradient(145deg,rgba(26,32,62,.88),rgba(12,16,35,.88));
+  backdrop-filter:blur(15px);
+  transition:transform .35s,border-color .35s,box-shadow .35s;
+}
+.game-card:before{
+  content:"";
+  position:absolute;
+  width:200px;height:200px;
+  top:-95px;left:-75px;
+  border-radius:50%;
+  background:var(--accent);
+  opacity:.15;
+  filter:blur(65px);
+  pointer-events:none;
+  transition:opacity .3s,transform .4s;
+}
+.game-card:hover{
+  transform:translateY(-7px);
+  border-color:color-mix(in srgb,var(--accent),transparent 35%);
+  box-shadow:0 18px 50px #0004,0 0 28px color-mix(in srgb,var(--accent),transparent 90%);
+}
+.game-card:hover:before{opacity:.3;transform:scale(1.3)}
+.game-card.family{--accent:#ff64ce}
+.game-card.sheer{--accent:#4beaff}
+.game-card.robo{--accent:#a57aff}
+.game-card.verse{--accent:#ffb35c}
+.card-top{
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+  gap:12px;
+  margin-bottom:18px;
+}
+.game-icon{
+  width:65px;height:65px;
+  display:grid;place-items:center;
+  border-radius:19px;
+  border:1px solid color-mix(in srgb,var(--accent),transparent 60%);
+  background:color-mix(in srgb,var(--accent),transparent 88%);
+  font-size:34px;
+  transition:transform .3s;
+}
+.game-card:hover .game-icon{transform:rotate(-5deg) scale(1.06)}
+.game-badge{
+  font-size:13px;
+  padding:7px 10px;
+  border:1px solid #55efc733;
+  border-radius:10px;
+  background:#55efc70b;
+  color:#a9ffdb;
+}
+.game-title{font-size:27px;margin:0 0 8px}
+.game-description{font-size:16px;color:var(--muted);line-height:2.1;margin:0}
+.game-tags{display:flex;flex-wrap:wrap;gap:7px;margin:17px 0 22px}
+.game-tags span{
+  font-size:13px;
+  color:#cbd2e9;
+  padding:6px 10px;
+  border-radius:8px;
+  background:#ffffff08;
+  border:1px solid #ffffff0d;
+}
+.card-link{
+  width:100%;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+  padding:13px 15px;
+  border:1px solid color-mix(in srgb,var(--accent),transparent 65%);
+  border-radius:13px;
+  background:color-mix(in srgb,var(--accent),transparent 90%);
+  font-size:16px;
+  cursor:pointer;
+  transition:.25s;
+  color:white;
+}
 .card-link:hover{background:color-mix(in srgb,var(--accent),transparent 80%)}
-.family{--accent:#ff58c8}
-.sheer{--accent:#42e8ff}
-.robo{--accent:#9b5cff}
-.verse{--accent:#ffad55}
-.about{padding:30px;border:1px solid #ffffff19;border-radius:23px;background:radial-gradient(ellipse at top right,#9b5cff24,transparent 55%),#121831bb}
-.about p{color:var(--muted);font-size:13px;line-height:2.3}
-.credit{display:inline-block;margin-top:8px;padding:10px 13px;border-radius:10px;color:#a9f4ff;background:#42e8ff0a;border:1px solid #42e8ff30;font-size:12px}
-footer{margin-top:35px;padding:25px 0;border-top:1px solid #ffffff12;color:#8893b1;font-size:11px}
-.footer-inner{display:flex;justify-content:space-between;align-items:center;gap:15px;flex-wrap:wrap}
-.footer-links{display:flex;gap:16px;flex-wrap:wrap}
-.reveal{opacity:0;transform:translateY(22px);transition:opacity .6s,transform .6s}
+.card-link span:last-child{font-size:22px;transition:transform .25s}
+.card-link:hover span:last-child{transform:translateX(-5px)}
+.game-card.family .game-title{
+  color:transparent;
+  background:linear-gradient(90deg,#ff9ce1,#c3a0ff,#71efff);
+  background-clip:text;
+  -webkit-background-clip:text;
+}
+
+/* صفحات اختصاصی داخلی */
+.detail-hero{
+  min-height:500px;
+  padding:65px 0 45px;
+  display:grid;
+  place-items:center;
+  text-align:center;
+}
+.detail-content{width:100%;max-width:850px}
+.detail-icon{
+  width:105px;height:105px;
+  display:grid;place-items:center;
+  margin:0 auto 18px;
+  border:1px solid color-mix(in srgb,var(--accent),transparent 55%);
+  border-radius:30px;
+  background:color-mix(in srgb,var(--accent),transparent 90%);
+  font-size:57px;
+  box-shadow:0 0 45px color-mix(in srgb,var(--accent),transparent 85%);
+  animation:iconFloat 3s ease-in-out infinite;
+}
+@keyframes iconFloat{50%{transform:translateY(-8px) rotate(2deg)}}
+.detail-title{
+  font-size:clamp(38px,7vw,70px);
+  line-height:1.5;
+  margin:0 0 12px;
+  opacity:0;
+  filter:blur(15px);
+  transform:translateY(65px);
+  animation:welcomeIn 1.2s cubic-bezier(.16,1,.3,1) .12s forwards;
+}
+.detail-description{
+  max-width:690px;
+  margin:auto;
+  color:var(--muted);
+  font-size:19px;
+  line-height:2.2;
+}
+.detail-actions{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:11px;
+  margin-top:25px;
+}
+.detail-panel{
+  padding:27px;
+  border:1px solid var(--border);
+  border-radius:22px;
+  background:rgba(19,24,48,.75);
+}
+.detail-panel h3{font-size:25px;margin:0 0 10px}
+.detail-panel p{font-size:16px;color:var(--muted);line-height:2.2;margin:0}
+.feature-grid{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:14px;
+  margin-top:18px;
+}
+.feature{
+  padding:20px;
+  border:1px solid #ffffff15;
+  border-radius:17px;
+  background:#ffffff06;
+}
+.feature-icon{font-size:27px}
+.feature h4{font-size:19px;margin:8px 0}
+.feature p{font-size:14px;color:var(--muted);line-height:2;margin:0}
+.back-projects{margin-bottom:20px}
+
+/* معرفی استودیو و فوتر */
+.about-box{
+  padding:30px;
+  border:1px solid var(--border);
+  border-radius:23px;
+  background:radial-gradient(ellipse at top right,#9c62ff25,transparent 55%),#121831bb;
+}
+.about-box p{font-size:16px;line-height:2.3;color:var(--muted)}
+.credit{
+  display:inline-block;
+  margin-top:8px;
+  padding:10px 14px;
+  border-radius:11px;
+  color:#b7f6ff;
+  border:1px solid #4beaff35;
+  background:#4beaff0b;
+  font-size:15px;
+}
+footer{margin-top:35px;padding:25px 0;border-top:1px solid #ffffff13}
+.footer-inner{display:flex;align-items:center;justify-content:space-between;gap:15px;flex-wrap:wrap}
+.footer-copy{font-size:13px;color:#8994b3}
+.footer-links{display:flex;flex-wrap:wrap;gap:17px;font-size:14px;color:#b8c0d9}
+.footer-links a:hover{color:var(--cyan)}
+.back-top{
+  position:fixed;
+  bottom:18px;left:18px;
+  z-index:30;
+  width:45px;height:45px;
+  display:grid;place-items:center;
+  border:1px solid var(--border);
+  border-radius:14px;
+  background:#10152de8;
+  backdrop-filter:blur(15px);
+  opacity:0;visibility:hidden;transform:translateY(10px);
+  transition:.25s;
+  font-size:23px;
+}
+.back-top.visible{opacity:1;visibility:visible;transform:translateY(0)}
+.reveal{opacity:0;transform:translateY(23px);transition:opacity .65s,transform .65s}
 .reveal.show{opacity:1;transform:translateY(0)}
-#particles{position:fixed;inset:0;width:100%;height:100%;z-index:-1;pointer-events:none}
-@media(max-width:700px){.navlinks{display:none}.hero{min-height:530px;padding-top:75px}.grid{grid-template-columns:1fr}.card p{min-height:0}.section{padding:38px 0}.stats{gap:22px}}
-@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}.reveal{opacity:1;transform:none}}
+.not-found{text-align:center;padding:100px 15px}
+[hidden]{display:none!important}
+
+@media(max-width:740px){
+  .navlinks{display:none}
+  .hero{min-height:520px;padding:75px 0 55px}
+  .games-grid{grid-template-columns:1fr}
+  .section{padding:35px 0}
+  .game-card{padding:21px}
+  .game-description{min-height:0}
+  .feature-grid{grid-template-columns:1fr}
+  .detail-hero{min-height:450px;padding-top:50px}
+}
+@media(max-width:430px){
+  .brand{font-size:16px}
+  .brand-icon{width:38px;height:38px}
+  .nav-cta{font-size:13px;padding:9px 10px}
+  .welcome{letter-spacing:0}
+  .hero-description,.detail-description{font-size:16px}
+  .stats{gap:19px}
+  .stat strong{font-size:26px}
+  .hero-buttons .btn,.detail-actions .btn{width:100%}
+  .section-title{font-size:29px}
+  .game-title{font-size:24px}
+  .about-box{padding:22px}
+}
+@media(prefers-reduced-motion:reduce){
+  *,*:before,*:after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}
+  .reveal{opacity:1;transform:none}
+}
 </style>
 </head>
+
 <body>
 <canvas id="particles"></canvas>
+<div class="ambient a"></div>
+<div class="ambient b"></div>
 
-<header class="nav">
-  <a class="brand" href="#home"><span class="logo">✦</span><span>استودیو جبارفر<small>JABARFAR STUDIO</small></span></a>
-  <nav class="navlinks"><a href="#home">خانه</a><a href="#games">پروژه‌ها</a><a href="#about">درباره استودیو</a></nav>
-  <a class="navbutton" href="#games">مشاهده بازی‌ها ↙</a>
+<header class="navbar">
+  <a class="brand" href="#home" data-home>
+    <span class="brand-icon">✦</span>
+    <span>استودیو جبارفر<small>JABARFAR STUDIO</small></span>
+  </a>
+  <nav class="navlinks">
+    <a href="#home" data-home>خانه</a>
+    <a href="#games" data-home>پروژه‌ها</a>
+    <a href="#about" data-home>درباره استودیو</a>
+  </nav>
+  <a class="nav-cta" href="#games" data-home>مشاهده پروژه‌ها ↙</a>
 </header>
 
 <main>
-<section class="hero container" id="home">
-  <div class="hero-content">
-    <div class="pill"><span class="dot"></span> دنیایی از بازی و خلاقیت</div>
-    <h1 class="welcome">خوش اومدی به<span class="gradient">استودیو جبارفر</span></h1>
-    <p>به دنیایی از پروژه‌های خلاقانه وارد شو؛ بازی‌های گروهی، سرگرمی‌های آنلاین و تجربه‌هایی که برای تو ساخته شده‌اند.</p>
-    <div class="hero-actions">
-      <a class="button primary" href="#games">🎮 کشف بازی‌ها ←</a>
-      <a class="button secondary" href="#about">آشنایی با استودیو</a>
+  <!-- صفحه اصلی -->
+  <section class="page active" id="homePage">
+    <section class="hero container" id="home">
+      <div class="hero-content">
+        <div class="pill"><span class="dot"></span> دنیای بازی‌ها و ایده‌های خلاقانه</div>
+        <h1 class="welcome">خوش اومدی به<span class="gradient">استودیو جبارفر</span></h1>
+        <p class="hero-description">به دنیایی وارد شو که ایده‌ها به تجربه‌های جذاب تبدیل می‌شن! بازی‌های آنلاین، سرگرمی‌های گروهی و پروژه‌های اختصاصی رو کشف کن.</p>
+        <div class="hero-buttons">
+          <a class="btn btn-primary" href="#games">🎮 کشف بازی‌ها ←</a>
+          <a class="btn btn-secondary" href="#about">✨ آشنایی با استودیو</a>
+        </div>
+        <div class="stats">
+          <div class="stat"><strong>04</strong><span>پروژه معرفی‌شده</span></div>
+          <div class="stat"><strong>∞</strong><span>ایده‌های تازه</span></div>
+          <div class="stat"><strong>24/7</strong><span>دنیای سرگرمی</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section container" id="games">
+      <div class="section-heading reveal">
+        <div class="kicker">PROJECT COLLECTION</div>
+        <h2 class="section-title">پروژه‌های استودیو</h2>
+        <p class="section-subtitle">هر کارت را انتخاب کن تا صفحه اختصاصی همان پروژه باز شود.</p>
+      </div>
+
+      <div class="games-grid">
+        <article class="game-card family reveal">
+          <div class="card-top"><div class="game-icon">🎭</div><span class="game-badge">✦ بازی گروهی</span></div>
+          <h3 class="game-title">خانواده لند</h3>
+          <p class="game-description">یک دورهمی معمولی را به یک ماجراجویی تبدیل کن؛ با بازی‌های گروهی و سرگرمی‌های متنوع.</p>
+          <div class="game-tags"><span>🎭 پانتومیم</span><span>🕵️ جاسوس</span><span>🔎 مافیا</span><span>💬 جرئت و حقیقت</span></div>
+          <a class="card-link" href="#family-land" data-page="family-land"><span>صفحه اختصاصی خانواده لند</span><span>←</span></a>
+        </article>
+
+        <article class="game-card sheer reveal">
+          <div class="card-top"><div class="game-icon">📝</div><span class="game-badge">✦ پروژه وب</span></div>
+          <h3 class="game-title">شعرشو</h3>
+          <p class="game-description">با پروژه شعرشو آشنا شو و از صفحه اختصاصی آن وارد نسخه اصلی شو.</p>
+          <div class="game-tags"><span>✍️ خلاقیت</span><span>🌐 تحت وب</span><span>📱 سازگار با موبایل</span></div>
+          <a class="card-link" href="#sheersho" data-page="sheersho"><span>صفحه اختصاصی شعرشو</span><span>←</span></a>
+        </article>
+
+        <article class="game-card robo reveal">
+          <div class="card-top"><div class="game-icon">🤖</div><span class="game-badge">✦ پروژه وب</span></div>
+          <h3 class="game-title">روبوفکر</h3>
+          <p class="game-description">با روبوفکر آشنا شو؛ پروژه‌ای برای تجربه ایده‌های تازه و سرگرمی دیجیتال.</p>
+          <div class="game-tags"><span>🧠 فکر و خلاقیت</span><span>🌐 تحت وب</span></div>
+          <a class="card-link" href="#robofeckr" data-page="robofeckr"><span>صفحه اختصاصی روبوفکر</span><span>←</span></a>
+        </article>
+
+        <article class="game-card verse reveal">
+          <div class="card-top"><div class="game-icon">🚀</div><span class="game-badge">✦ پروژه بازی</span></div>
+          <h3 class="game-title">امیر ورس</h3>
+          <p class="game-description">به دنیای امیر ورس وارد شو و درباره این پروژه بیشتر بدان.</p>
+          <div class="game-tags"><span>🎮 بازی</span><span>🌌 دنیای اختصاصی</span></div>
+          <a class="card-link" href="#amirverse" data-page="amirverse"><span>صفحه اختصاصی امیر ورس</span><span>←</span></a>
+        </article>
+      </div>
+    </section>
+
+    <section class="section container" id="about">
+      <div class="about-box reveal">
+        <div class="kicker">ABOUT THE STUDIO</div>
+        <h2 class="section-title">ایده‌ها اینجا زنده می‌شن ✨</h2>
+        <p>استودیو جبارفر فضایی برای معرفی پروژه‌های دیجیتال، بازی‌های تحت وب و تجربه‌های سرگرم‌کننده است. هدف ما تبدیل ایده‌های تازه به پروژه‌هایی جذاب و قابل استفاده است.</p>
+        <div class="credit">✦ ساخته‌شده توسط امیر حسین جبارفر</div>
+      </div>
+    </section>
+  </section>
+
+  <!-- صفحه داخلی خانواده لند -->
+  <section class="page" id="family-land" style="--accent:#ff64ce">
+    <div class="container">
+      <section class="detail-hero">
+        <div class="detail-content">
+          <div class="detail-icon">🎭</div>
+          <h1 class="detail-title">خوش اومدی به<br><span class="gradient">خانواده لند</span></h1>
+          <p class="detail-description">دورهمی‌هات رو به یک ماجراجویی تبدیل کن! وارد دنیای بازی‌های گروهی شو و با دوستان و خانواده لحظات جذابی بساز.</p>
+          <div class="detail-actions">
+            <a class="btn btn-primary" href="https://amirhosseinjabarfar-art.github.io/family-game/" target="_blank" rel="noopener noreferrer">🎮 اجرای بازی خانواده لند ←</a>
+            <button class="btn btn-secondary" data-home>بازگشت به استودیو</button>
+          </div>
+        </div>
+      </section>
+      <section class="section">
+        <div class="detail-panel">
+          <h3>درباره خانواده لند</h3>
+          <p>خانواده لند برای دورهمی و سرگرمی گروهی طراحی شده است. برای تجربه امکانات واقعی بازی، وارد نسخه منتشرشده آن شو.</p>
+        </div>
+        <div class="feature-grid">
+          <div class="feature"><div class="feature-icon">🔎</div><h4>مافیا</h4><p>نقش‌آفرینی، گفت‌وگو و تلاش برای شناسایی نقش‌ها.</p></div>
+          <div class="feature"><div class="feature-icon">🎨</div><h4>پانتومیم</h4><p>کلمه‌ها را نمایش بده و بگذار هم‌تیمی‌ها حدس بزنند.</p></div>
+          <div class="feature"><div class="feature-icon">🕵️</div><h4>جاسوس</h4><p>با توجه به سرنخ‌ها و پرسش‌ها، فضای بازی را هیجان‌انگیز کن.</p></div>
+          <div class="feature"><div class="feature-icon">💬</div><h4>جرئت و حقیقت</h4><p>یک انتخاب سرگرم‌کننده برای دورهمی با دوستان و خانواده.</p></div>
+        </div>
+        <div class="detail-actions"><a class="btn btn-primary" href="https://amirhosseinjabarfar-art.github.io/family-game/" target="_blank" rel="noopener noreferrer">ورود به نسخه اصلی بازی ←</a></div>
+      </section>
     </div>
-    <div class="stats">
-      <div class="stat"><strong>04</strong><span>پروژه</span></div>
-      <div class="stat"><strong>∞</strong><span>ایده‌های تازه</span></div>
-      <div class="stat"><strong>24/7</strong><span>دنیای سرگرمی</span></div>
+  </section>
+
+  <!-- صفحه داخلی شعرشو -->
+  <section class="page" id="sheersho" style="--accent:#4beaff">
+    <div class="container">
+      <section class="detail-hero">
+        <div class="detail-content">
+          <div class="detail-icon">📝</div>
+          <h1 class="detail-title">دنیای <span class="gradient">شعرشو</span></h1>
+          <p class="detail-description">به صفحه اختصاصی شعرشو خوش اومدی! با این پروژه آشنا شو و برای استفاده از نسخه اصلی وارد آن شو.</p>
+          <div class="detail-actions">
+            <a class="btn btn-primary" href="https://amirhosseinjabarfar-art.github.io/sheersho/" target="_blank" rel="noopener noreferrer">ورود به شعرشو ←</a>
+            <button class="btn btn-secondary" data-home>بازگشت به استودیو</button>
+          </div>
+        </div>
+      </section>
+      <section class="section">
+        <div class="detail-panel">
+          <h3>درباره شعرشو</h3>
+          <p>شعرشو یکی از پروژه‌های استودیو جبارفر است. امکانات واقعی پروژه در نسخه اصلی آن قرار دارد؛ با دکمه بالا وارد شو.</p>
+        </div>
+      </section>
     </div>
-  </div>
-</section>
+  </section>
 
-<section class="section container" id="games">
-  <div class="heading reveal"><div class="kicker">OUR PROJECTS</div><h2>پروژه‌های استودیو</h2><p class="sub">هر کارت را انتخاب کن تا وارد صفحه اختصاصی آن پروژه شوی.</p></div>
-  <div class="grid">
+  <!-- صفحه داخلی روبوفکر -->
+  <section class="page" id="robofeckr" style="--accent:#a57aff">
+    <div class="container">
+      <section class="detail-hero">
+        <div class="detail-content">
+          <div class="detail-icon">🤖</div>
+          <h1 class="detail-title">دنیای <span class="gradient">روبوفکر</span></h1>
+          <p class="detail-description">به صفحه اختصاصی روبوفکر خوش اومدی! اینجا می‌تونی با پروژه آشنا بشی و با یک کلیک وارد نسخه اصلی شوی.</p>
+          <div class="detail-actions">
+            <a class="btn btn-primary" href="https://amirhosseinjabarfar-art.github.io/robofeckr/" target="_blank" rel="noopener noreferrer">ورود به روبوفکر ←</a>
+            <button class="btn btn-secondary" data-home>بازگشت به استودیو</button>
+          </div>
+        </div>
+      </section>
+      <section class="section">
+        <div class="detail-panel">
+          <h3>درباره روبوفکر</h3>
+          <p>روبوفکر یکی از پروژه‌های استودیو جبارفر است. برای استفاده از امکانات نسخه منتشرشده، وارد پروژه اصلی شو.</p>
+        </div>
+      </section>
+    </div>
+  </section>
 
-    <article class="card family reveal">
-      <div class="card-top"><div class="gameicon">🎭</div><span class="badge">● منتشرشده</span></div>
-      <h3>خانواده لند</h3>
-      <p>دورهمی را به ماجراجویی تبدیل کن؛ مافیا، پانتومیم، جاسوس و جرئت و حقیقت در یک دنیای سرگرم‌کننده.</p>
-      <div class="tags"><span>🎭 پانتومیم</span><span>🕵️ جاسوس</span><span>🔎 مافیا</span><span>💬 جرئت و حقیقت</span></div>
-      <a class="card-link" href="games/family-land.html"><span>صفحه اختصاصی خانواده لند</span><span>←</span></a>
-    </article>
-
-    <article class="card sheer reveal">
-      <div class="card-top"><div class="gameicon">📝</div><span class="badge">● پروژه وب</span></div>
-      <h3>شعرشو</h3>
-      <p>به دنیای شعر و خلاقیت وارد شو و پروژه شعرشو را از صفحه اختصاصی آن بشناس.</p>
-      <div class="tags"><span>✍️ خلاقیت</span><span>🌐 تحت وب</span><span>📱 موبایل</span></div>
-      <a class="card-link" href="games/sheersho.html"><span>صفحه اختصاصی شعرشو</span><span>←</span></a>
-    </article>
-
-    <article class="card robo reveal">
-      <div class="card-top"><div class="gameicon">🤖</div><span class="badge">● پروژه وب</span></div>
-      <h3>روبوفکر</h3>
-      <p>با روبوفکر آشنا شو؛ پروژه‌ای برای تجربه ایده‌های تازه و سرگرمی دیجیتال.</p>
-      <div class="tags"><span>🧠 فکر و خلاقیت</span><span>🌐 تحت وب</span></div>
-      <a class="card-link" href="games/robofeckr.html"><span>صفحه اختصاصی روبوفکر</span><span>←</span></a>
-    </article>
-
-    <article class="card verse reveal">
-      <div class="card-top"><div class="gameicon">🚀</div><span class="badge">● پروژه بازی</span></div>
-      <h3>امیر ورس</h3>
-      <p>به دنیای امیر ورس وارد شو و با پروژه بازی‌محور استودیو بیشتر آشنا شو.</p>
-      <div class="tags"><span>🎮 بازی</span><span>🌌 دنیای اختصاصی</span></div>
-      <a class="card-link" href="games/amirverse.html"><span>صفحه اختصاصی امیر ورس</span><span>←</span></a>
-    </article>
-
-  </div>
-</section>
-
-<section class="section container" id="about">
-  <div class="about reveal">
-    <div class="kicker">ABOUT THE STUDIO</div>
-    <h2>ایده‌ها اینجا زنده می‌شن ✨</h2>
-    <p>استودیو جبارفر فضایی برای معرفی بازی‌ها، پروژه‌های دیجیتال و تجربه‌های سرگرم‌کننده است. هدف ما تبدیل ایده‌های تازه به پروژه‌هایی جذاب و قابل استفاده است.</p>
-    <div class="credit">✦ ساخته‌شده توسط امیر حسین جبارفر</div>
-  </div>
-</section>
+  <!-- صفحه داخلی امیر ورس -->
+  <section class="page" id="amirverse" style="--accent:#ffb35c">
+    <div class="container">
+      <section class="detail-hero">
+        <div class="detail-content">
+          <div class="detail-icon">🚀</div>
+          <h1 class="detail-title">دنیای <span class="gradient">امیر ورس</span></h1>
+          <p class="detail-description">به صفحه اختصاصی امیر ورس خوش اومدی! با پروژه آشنا شو و برای تجربه نسخه اصلی وارد بازی شو.</p>
+          <div class="detail-actions">
+            <a class="btn btn-primary" href="https://amirhosseinjabarfar-art.github.io/amir-game/" target="_blank" rel="noopener noreferrer">ورود به امیر ورس ←</a>
+            <button class="btn btn-secondary" data-home>بازگشت به استودیو</button>
+          </div>
+        </div>
+      </section>
+      <section class="section">
+        <div class="detail-panel">
+          <h3>درباره امیر ورس</h3>
+          <p>امیر ورس یکی از پروژه‌های بازی استودیو جبارفر است. بازی اصلی در آدرس اختصاصی خودش منتشر شده و از دکمه بالا قابل دسترسی است.</p>
+        </div>
+      </section>
+    </div>
+  </section>
 </main>
 
-<footer><div class="container footer-inner"><span>© <span id="year"></span> استودیو جبارفر</span><div class="footer-links"><a href="#home">خانه</a><a href="#games">پروژه‌ها</a><a href="#about">درباره ما</a></div></div></footer>
+<footer>
+  <div class="container footer-inner">
+    <div class="footer-copy">© <span id="year"></span> استودیو جبارفر · ساخته‌شده توسط امیر حسین جبارفر</div>
+    <nav class="footer-links">
+      <a href="#home" data-home>خانه</a>
+      <a href="#games" data-home>پروژه‌ها</a>
+      <a href="#about" data-home>درباره استودیو</a>
+    </nav>
+  </div>
+</footer>
+
+<a href="#home" class="back-top" id="backTop" aria-label="بازگشت به بالای صفحه">↑</a>
 
 <script>
 document.getElementById("year").textContent=new Date().getFullYear();
 
-const revealObserver=("IntersectionObserver" in window)?new IntersectionObserver(entries=>{
-  entries.forEach(entry=>{
-    if(entry.isIntersecting){
-      entry.target.classList.add("show");
-      revealObserver.unobserve(entry.target);
-    }
-  });
-},{threshold:.08}):null;
+const pages=[...document.querySelectorAll(".page")];
+const validPages=["home","family-land","sheersho","robofeckr","amirverse"];
 
-document.querySelectorAll(".reveal").forEach(el=>{
-  if(revealObserver)revealObserver.observe(el);
-  else el.classList.add("show");
+function showPage(name,updateHistory=true){
+  if(!validPages.includes(name))name="home";
+
+  pages.forEach(page=>{
+    page.classList.toggle("active",page.id===(name==="home"?"homePage":name));
+  });
+
+  document.body.dataset.page=name;
+
+  if(updateHistory){
+    const hash=name==="home"?"#home":"#"+name;
+    if(location.hash!==hash)history.pushState({page:name},"",hash);
+  }
+
+  window.scrollTo({top:0,behavior:"auto"});
+
+  const active=document.querySelector(".page.active");
+  if(active){
+    active.querySelectorAll(".reveal").forEach(el=>el.classList.add("show"));
+  }
+}
+
+document.addEventListener("click",event=>{
+  const pageLink=event.target.closest("[data-page]");
+  if(pageLink){
+    event.preventDefault();
+    showPage(pageLink.dataset.page);
+    return;
+  }
+
+  const homeLink=event.target.closest("[data-home]");
+  if(homeLink){
+    event.preventDefault();
+    const href=homeLink.getAttribute("href")||"#home";
+    const target=href==="#games"?"games":href==="#about"?"about":"home";
+    showPage("home");
+    if(target!=="home"){
+      setTimeout(()=>document.getElementById(target)?.scrollIntoView({behavior:"smooth"}),50);
+    }
+  }
 });
 
+function handleHash(){
+  const name=location.hash.replace("#","");
+  if(validPages.includes(name))showPage(name,false);
+  else showPage("home",false);
+
+  if(name==="games"||name==="about"){
+    setTimeout(()=>document.getElementById(name)?.scrollIntoView(),30);
+  }
+}
+window.addEventListener("popstate",handleHash);
+window.addEventListener("hashchange",()=>{
+  const name=location.hash.replace("#","");
+  if(validPages.includes(name))showPage(name,false);
+  else if(!name||name==="games"||name==="about")showPage("home",false);
+});
+
+if(location.hash){
+  const initial=location.hash.replace("#","");
+  if(validPages.includes(initial))showPage(initial,false);
+}
+
+/* نمایش تدریجی عناصر */
+if("IntersectionObserver" in window){
+  const observer=new IntersectionObserver(entries=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting){
+        entry.target.classList.add("show");
+        observer.unobserve(entry.target);
+      }
+    });
+  },{threshold:.08});
+
+  document.querySelectorAll("#homePage .reveal").forEach(el=>observer.observe(el));
+}else{
+  document.querySelectorAll(".reveal").forEach(el=>el.classList.add("show"));
+}
+
+/* دکمه بازگشت به بالا */
+const backTop=document.getElementById("backTop");
+window.addEventListener("scroll",()=>{
+  backTop.classList.toggle("visible",window.scrollY>400);
+},{passive:true});
+
+/* ذرات متحرک پس‌زمینه */
 (()=>{
   const canvas=document.getElementById("particles");
   const ctx=canvas.getContext("2d");
   if(!ctx)return;
-  let w=0,h=0,particles=[],frame=0;
-  const reduce=window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  let width=0,height=0,particles=[],frame=0;
+  const reduced=window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   function resize(){
     const ratio=Math.min(window.devicePixelRatio||1,2);
-    w=innerWidth;h=innerHeight;
-    canvas.width=w*ratio;canvas.height=h*ratio;
+    width=innerWidth;
+    height=innerHeight;
+    canvas.width=width*ratio;
+    canvas.height=height*ratio;
+    canvas.style.width=width+"px";
+    canvas.style.height=height+"px";
     ctx.setTransform(ratio,0,0,ratio,0,0);
-    particles=Array.from({length:Math.min(65,Math.floor(w/15))},()=>({
-      x:Math.random()*w,y:Math.random()*h,r:Math.random()*1.5+.4,
-      vx:(Math.random()-.5)*.24,vy:(Math.random()-.5)*.24,a:Math.random()*.4+.1
+
+    particles=Array.from({length:Math.min(75,Math.floor(width/14))},()=>({
+      x:Math.random()*width,
+      y:Math.random()*height,
+      r:Math.random()*1.5+.4,
+      vx:(Math.random()-.5)*.24,
+      vy:(Math.random()-.5)*.24,
+      alpha:Math.random()*.4+.12
     }));
     draw();
   }
+
   function draw(){
     cancelAnimationFrame(frame);
-    ctx.clearRect(0,0,w,h);
+    ctx.clearRect(0,0,width,height);
     particles.forEach(p=>{
-      if(!reduce){p.x+=p.vx;p.y+=p.vy;if(p.x<0||p.x>w)p.vx*=-1;if(p.y<0||p.y>h)p.vy*=-1;}
-      ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
-      ctx.fillStyle=`rgba(173,169,255,${p.a})`;ctx.fill();
+      if(!reduced){
+        p.x+=p.vx;p.y+=p.vy;
+        if(p.x<0||p.x>width)p.vx*=-1;
+        if(p.y<0||p.y>height)p.vy*=-1;
+      }
+      ctx.beginPath();
+      ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+      ctx.fillStyle=`rgba(174,170,255,${p.alpha})`;
+      ctx.fill();
     });
-    if(!reduce&&!document.hidden)frame=requestAnimationFrame(draw);
+    if(!reduced&&!document.hidden)frame=requestAnimationFrame(draw);
   }
+
   addEventListener("resize",resize);
-  document.addEventListener("visibilitychange",()=>{if(document.hidden)cancelAnimationFrame(frame);else draw();});
+  document.addEventListener("visibilitychange",()=>{
+    if(document.hidden)cancelAnimationFrame(frame);
+    else draw();
+  });
   resize();
 })();
 </script>
