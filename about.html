@@ -1,0 +1,538 @@
+
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#080b18">
+<title>درباره ما | استودیو جبارفر</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lalezar&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --bg:#080b18;
+  --purple:#a855f7;
+  --cyan:#41e7ff;
+  --pink:#ff4fba;
+  --text:#f7f7ff;
+  --muted:#aab1ce;
+  --border:rgba(255,255,255,.12);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:"Lalezar",Tahoma,sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  min-height:100vh;
+  overflow-x:hidden;
+}
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  z-index:-3;
+  background:
+    radial-gradient(ellipse at 15% 15%,#8b42ff27,transparent 40%),
+    radial-gradient(ellipse at 85% 65%,#00d9ff18,transparent 38%),
+    radial-gradient(ellipse at 50% 100%,#ff4fba13,transparent 40%),
+    var(--bg);
+}
+body::after{
+  content:"";
+  position:fixed;
+  inset:0;
+  z-index:-2;
+  pointer-events:none;
+  background-image:
+    linear-gradient(#ffffff06 1px,transparent 1px),
+    linear-gradient(90deg,#ffffff06 1px,transparent 1px);
+  background-size:42px 42px;
+  mask-image:linear-gradient(to bottom,black,transparent 90%);
+}
+a{color:inherit;text-decoration:none}
+button{font:inherit}
+.container{width:min(1100px,calc(100% - 34px));margin:auto}
+.orb{
+  position:fixed;
+  width:300px;height:300px;
+  border-radius:50%;
+  filter:blur(100px);
+  opacity:.18;
+  pointer-events:none;
+  z-index:-1;
+  animation:float 10s ease-in-out infinite alternate;
+}
+.orb.one{background:var(--purple);top:15%;right:-170px}
+.orb.two{background:var(--cyan);bottom:5%;left:-170px;animation-delay:-5s}
+@keyframes float{to{transform:translate(35px,-25px) scale(1.15)}}
+
+header{
+  position:sticky;
+  top:12px;
+  z-index:20;
+  padding:0 12px;
+  margin-top:12px;
+}
+nav{
+  max-width:1100px;
+  margin:auto;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:15px;
+  padding:12px 17px;
+  border:1px solid var(--border);
+  border-radius:20px;
+  background:#0c1022c9;
+  backdrop-filter:blur(22px);
+  box-shadow:0 15px 45px #0003;
+}
+.brand{display:flex;align-items:center;gap:10px}
+.logo{
+  display:grid;
+  place-items:center;
+  width:43px;height:43px;
+  border-radius:14px;
+  font-size:25px;
+  background:linear-gradient(135deg,var(--purple),#5d69ff,var(--cyan));
+  box-shadow:0 0 25px #a855f733;
+}
+.brand-name{font-size:21px}
+.brand-name small{
+  display:block;
+  font:10px Tahoma,sans-serif;
+  color:var(--muted);
+  margin-top:4px;
+}
+.nav-links{display:flex;gap:22px}
+.nav-links a{color:#c5cbe1;transition:.25s}
+.nav-links a:hover{color:var(--cyan)}
+.nav-cta{
+  padding:10px 17px;
+  border-radius:12px;
+  background:linear-gradient(120deg,#9347f7,#586bff);
+  box-shadow:0 0 22px #9255ff26;
+}
+.menu{
+  display:none;
+  border:1px solid var(--border);
+  background:#ffffff08;
+  color:white;
+  border-radius:12px;
+  padding:7px 12px;
+  font-size:22px;
+  cursor:pointer;
+}
+
+.hero{
+  position:relative;
+  padding:100px 0 75px;
+  text-align:center;
+}
+.badge{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding:8px 15px;
+  border-radius:40px;
+  border:1px solid #a855f74c;
+  background:#a855f710;
+  color:#d8c0ff;
+  margin-bottom:25px;
+  animation:fadeDown .8s both;
+}
+.hero h1{
+  font-size:clamp(43px,8vw,82px);
+  line-height:1.35;
+  margin-bottom:18px;
+  animation:fadeUp .8s .1s both;
+}
+.gradient{
+  background:linear-gradient(100deg,#fff,#c6a0ff,var(--cyan),#ff8bd8);
+  background-size:250% auto;
+  color:transparent;
+  -webkit-background-clip:text;
+  background-clip:text;
+  animation:gradient 6s linear infinite;
+}
+@keyframes gradient{to{background-position:250% center}}
+.hero p{
+  max-width:760px;
+  margin:auto;
+  color:var(--muted);
+  font:15px/2.3 Tahoma,sans-serif;
+  animation:fadeUp .8s .2s both;
+}
+.hero-buttons{
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
+  gap:12px;
+  margin-top:28px;
+  animation:fadeUp .8s .3s both;
+}
+.btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:9px;
+  padding:12px 22px;
+  border:1px solid var(--border);
+  border-radius:14px;
+  transition:.25s;
+}
+.btn.primary{
+  background:linear-gradient(120deg,#9347f7,#586bff);
+  border:0;
+  box-shadow:0 10px 30px #9255ff2b;
+}
+.btn.secondary{background:#ffffff07}
+.btn:hover{transform:translateY(-4px);box-shadow:0 12px 30px #0003}
+
+.section{padding:40px 0 80px}
+.section-title{text-align:center;margin-bottom:30px}
+.section-title small{color:var(--cyan);font-size:15px}
+.section-title h2{font-size:clamp(29px,5vw,43px);margin-top:5px}
+.section-title p{
+  color:var(--muted);
+  font:14px/2 Tahoma,sans-serif;
+  margin:8px auto 0;
+  max-width:650px;
+}
+.story{
+  display:grid;
+  grid-template-columns:1.2fr .8fr;
+  gap:22px;
+}
+.panel{
+  border:1px solid var(--border);
+  border-radius:25px;
+  padding:30px;
+  background:linear-gradient(145deg,#ffffff0b,#ffffff03);
+  backdrop-filter:blur(16px);
+  transition:.3s;
+}
+.panel:hover{border-color:#a855f747;transform:translateY(-4px)}
+.panel h3{font-size:27px;margin-bottom:13px}
+.panel p{
+  color:var(--muted);
+  font:14px/2.25 Tahoma,sans-serif;
+}
+.big-icon{
+  display:grid;
+  place-items:center;
+  min-height:100%;
+  min-height:270px;
+  font-size:100px;
+  border-radius:20px;
+  background:
+    radial-gradient(circle,#a855f73b,transparent 65%),
+    #ffffff04;
+  position:relative;
+  overflow:hidden;
+}
+.big-icon::before,.big-icon::after{
+  content:"";
+  position:absolute;
+  width:190px;height:190px;
+  border:1px solid #b99aff35;
+  border-radius:50%;
+  animation:rotate 18s linear infinite;
+}
+.big-icon::after{
+  width:240px;height:240px;
+  border-style:dashed;
+  animation-direction:reverse;
+}
+.big-icon span{z-index:1;animation:bounce 3s ease-in-out infinite}
+@keyframes rotate{to{transform:rotate(360deg)}}
+@keyframes bounce{50%{transform:translateY(-12px) rotate(-5deg)}}
+
+.values{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:17px;
+  margin-top:20px;
+}
+.value{
+  padding:23px;
+  border:1px solid var(--border);
+  border-radius:20px;
+  background:#ffffff05;
+  transition:.3s;
+}
+.value:hover{transform:translateY(-6px);border-color:#41e7ff55}
+.value .icon{
+  display:grid;
+  place-items:center;
+  width:50px;height:50px;
+  border-radius:15px;
+  background:linear-gradient(135deg,#a855f729,#41e7ff15);
+  margin-bottom:13px;
+  font-size:25px;
+}
+.value h3{font-size:23px;margin-bottom:6px}
+.value p{color:var(--muted);font:13px/2 Tahoma,sans-serif}
+
+.creator{
+  text-align:center;
+  padding:38px 20px;
+  border:1px solid #a855f744;
+  border-radius:27px;
+  background:radial-gradient(ellipse at 50% 100%,#a855f71e,transparent 65%),#ffffff04;
+}
+.creator .avatar{
+  width:90px;height:90px;
+  display:grid;place-items:center;
+  margin:0 auto 15px;
+  border-radius:28px;
+  font-size:43px;
+  background:linear-gradient(135deg,#a855f7,#5c69ff,#41e7ff);
+  box-shadow:0 0 35px #a855f72b;
+  animation:avatarFloat 4s ease-in-out infinite;
+}
+@keyframes avatarFloat{50%{transform:translateY(-8px) rotate(3deg)}}
+.creator h2{font-size:32px;margin-bottom:8px}
+.creator p{
+  max-width:650px;
+  margin:0 auto 22px;
+  color:var(--muted);
+  font:14px/2.2 Tahoma,sans-serif;
+}
+
+footer{
+  padding:25px 0;
+  border-top:1px solid #ffffff12;
+  text-align:center;
+  color:var(--muted);
+  font:12px/2 Tahoma,sans-serif;
+}
+footer strong{
+  display:block;
+  color:white;
+  font:22px "Lalezar",sans-serif;
+  margin-bottom:5px;
+}
+.reveal{
+  opacity:0;
+  transform:translateY(22px);
+  transition:opacity .7s,transform .7s;
+}
+.reveal.visible{opacity:1;transform:translateY(0)}
+@keyframes fadeUp{
+  from{opacity:0;transform:translateY(22px)}
+  to{opacity:1;transform:translateY(0)}
+}
+@keyframes fadeDown{
+  from{opacity:0;transform:translateY(-15px)}
+  to{opacity:1;transform:translateY(0)}
+}
+
+@media(max-width:760px){
+  .menu{display:block}
+  .nav-cta{display:none}
+  .nav-links{
+    display:none;
+    position:absolute;
+    top:calc(100% + 8px);
+    left:12px;right:12px;
+    flex-direction:column;
+    gap:0;
+    padding:10px;
+    border:1px solid var(--border);
+    border-radius:17px;
+    background:#0c1022f5;
+    backdrop-filter:blur(20px);
+  }
+  .nav-links.open{display:flex}
+  .nav-links a{padding:12px;border-radius:10px}
+  .nav-links a:hover{background:#ffffff08}
+  .hero{padding:75px 0 50px}
+  .story{grid-template-columns:1fr}
+  .big-icon{min-height:220px;grid-row:1}
+  .values{grid-template-columns:1fr}
+  .panel{padding:23px}
+}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{
+    animation-duration:.01ms!important;
+    animation-iteration-count:1!important;
+    scroll-behavior:auto!important;
+    transition-duration:.01ms!important;
+  }
+}
+</style>
+</head>
+
+<body>
+<div class="orb one"></div>
+<div class="orb two"></div>
+
+<header>
+  <nav>
+    <a class="brand" href="index.html">
+      <span class="logo">ج</span>
+      <span class="brand-name">استودیو جبارفر<small>JABARFAR STUDIO</small></span>
+    </a>
+
+    <div class="nav-links" id="navLinks">
+      <a href="index.html">خانه</a>
+      <a href="index.html#games">بازی‌ها</a>
+      <a href="about.html">درباره ما</a>
+    </div>
+
+    <a class="nav-cta" href="index.html#games">🎮 دیدن بازی‌ها</a>
+    <button class="menu" id="menuBtn" aria-label="باز کردن منو" aria-expanded="false">☰</button>
+  </nav>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="container">
+      <div class="badge">✦ داستان ما، ایده‌های ما</div>
+      <h1>ما فقط بازی نمی‌سازیم؛<br><span class="gradient">دنیای تازه خلق می‌کنیم!</span></h1>
+      <p>
+        به صفحه رسمی درباره ما در استودیو جبارفر خوش اومدی!
+        اینجا جاییه که ایده‌ها به پروژه تبدیل می‌شن و بازی‌ها در یک خانه کنار هم قرار می‌گیرن.
+        هدف ما ساخت تجربه‌هایی خلاقانه، سرگرم‌کننده و متفاوت برای دوستداران بازیه.
+      </p>
+      <div class="hero-buttons">
+        <a href="index.html#games" class="btn primary">🚀 کشف بازی‌ها</a>
+        <a href="#story" class="btn secondary">✨ داستان استودیو</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="story">
+    <div class="container">
+      <div class="section-title reveal">
+        <small>✦ OUR STORY ✦</small>
+        <h2>داستان <span class="gradient">استودیو جبارفر</span></h2>
+        <p>هر پروژه با یک ایده شروع می‌شه؛ ایده‌ای که می‌تونه به تجربه‌ای جذاب تبدیل بشه.</p>
+      </div>
+
+      <div class="story">
+        <article class="panel reveal">
+          <h3>از یک ایده تا یک دنیای کامل 💡</h3>
+          <p>
+            استودیو جبارفر با هدف ساخت و معرفی پروژه‌های خلاقانه شکل گرفته است.
+            ما می‌خواهیم بازی‌ها و تجربه‌های دیجیتال خودمان را در یک وب‌سایت رسمی جمع کنیم
+            تا کاربران بتوانند به‌آسانی به نسخه‌های منتشرشده دسترسی داشته باشند و پروژه‌های آینده را دنبال کنند.
+          </p>
+          <p style="margin-top:13px">
+            «شعرشو» اولین بازی معرفی‌شده در این مجموعه است. نسخه وب آن در دسترس قرار دارد
+            و نسخه اپلیکیشن آن در آینده معرفی خواهد شد. پروژه‌های دیگر نیز به‌مرور به این مجموعه اضافه می‌شوند.
+          </p>
+        </article>
+
+        <div class="big-icon reveal" aria-label="نماد خلاقیت">
+          <span>🚀</span>
+        </div>
+      </div>
+
+      <div class="section-title reveal" style="margin-top:75px">
+        <small>✦ WHAT WE BELIEVE ✦</small>
+        <h2>چیزهایی که برامون <span class="gradient">مهمن</span></h2>
+        <p>این ارزش‌ها مسیر طراحی و توسعه پروژه‌های ما رو شکل می‌دن.</p>
+      </div>
+
+      <div class="values">
+        <article class="value reveal">
+          <div class="icon">💡</div>
+          <h3>خلاقیت</h3>
+          <p>دنبال ایده‌های تازه‌ایم و تلاش می‌کنیم برای هر پروژه تجربه‌ای مخصوص خودش بسازیم.</p>
+        </article>
+        <article class="value reveal">
+          <div class="icon">🎮</div>
+          <h3>سرگرمی</h3>
+          <p>بازی باید تجربه‌ای جذاب و به‌یادماندنی باشه؛ چیزی که کاربر از امتحان‌کردنش لذت ببره.</p>
+        </article>
+        <article class="value reveal">
+          <div class="icon">⚡</div>
+          <h3>پیشرفت</h3>
+          <p>هر پروژه فرصتی برای یادگیری، بهترشدن و ساختن تجربه‌های جدیدتره.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:0">
+    <div class="container">
+      <div class="creator reveal">
+        <div class="avatar">✦</div>
+        <h2>سازنده استودیو</h2>
+        <p>
+          استودیو جبارفر با مدیریت و خلاقیت <strong style="color:white">امیر حسین جبارفر</strong>
+          فعالیت می‌کند. این مجموعه با هدف توسعه و معرفی بازی‌ها و پروژه‌های دیجیتال ایجاد شده
+          و مسیر آن با انتشار پروژه‌های جدید ادامه پیدا می‌کند.
+        </p>
+        <a href="index.html#games" class="btn primary">🎮 مشاهده بازی‌ها</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:0">
+    <div class="container">
+      <div class="creator reveal">
+        <h2>این تازه شروع ماجراست! 🌌</h2>
+        <p>برای دیدن بازی‌های منتشرشده و آشنایی با پروژه‌های آینده، به صفحه اصلی استودیو سر بزن.</p>
+        <a href="index.html" class="btn secondary">← بازگشت به صفحه اصلی</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="container">
+    <strong>استودیو جبارفر</strong>
+    دنیای بازی‌های خلاقانه
+    <br>
+    © <span id="year"></span> تمامی حقوق محفوظ است.
+  </div>
+</footer>
+
+<script>
+(() => {
+  const menuBtn = document.getElementById("menuBtn");
+  const navLinks = document.getElementById("navLinks");
+
+  menuBtn.addEventListener("click", () => {
+    const open = navLinks.classList.toggle("open");
+    menuBtn.setAttribute("aria-expanded", String(open));
+    menuBtn.textContent = open ? "×" : "☰";
+  });
+
+  navLinks.querySelectorAll("a").forEach(link => {
+    link.addEventListener("click", () => {
+      navLinks.classList.remove("open");
+      menuBtn.setAttribute("aria-expanded", "false");
+      menuBtn.textContent = "☰";
+    });
+  });
+
+  document.getElementById("year").textContent = new Date().getFullYear();
+
+  const items = document.querySelectorAll(".reveal");
+
+  if ("IntersectionObserver" in window) {
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    items.forEach(item => observer.observe(item));
+  } else {
+    items.forEach(item => item.classList.add("visible"));
+  }
+})();
+</script>
+</body>
+</html>
