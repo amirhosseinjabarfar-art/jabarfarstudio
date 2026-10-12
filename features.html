@@ -1,0 +1,661 @@
+
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#080b18">
+<meta name="description" content="امکانات و قابلیت‌های استودیو جبارفر؛ خانه بازی‌ها و پروژه‌های خلاقانه.">
+<title>امکانات | استودیو جبارفر</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lalezar&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --bg:#080b18;
+  --purple:#a855f7;
+  --cyan:#41e7ff;
+  --pink:#ff4fba;
+  --text:#f7f7ff;
+  --muted:#aab1ce;
+  --border:rgba(255,255,255,.12);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:"Lalezar",Tahoma,sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  min-height:100vh;
+  overflow-x:hidden;
+}
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  z-index:-3;
+  background:
+    radial-gradient(ellipse at 15% 15%,#8b42ff27,transparent 40%),
+    radial-gradient(ellipse at 85% 65%,#00d9ff18,transparent 38%),
+    radial-gradient(ellipse at 50% 100%,#ff4fba13,transparent 40%),
+    var(--bg);
+}
+body::after{
+  content:"";
+  position:fixed;
+  inset:0;
+  z-index:-2;
+  pointer-events:none;
+  background-image:
+    linear-gradient(#ffffff06 1px,transparent 1px),
+    linear-gradient(90deg,#ffffff06 1px,transparent 1px);
+  background-size:42px 42px;
+  mask-image:linear-gradient(to bottom,black,transparent 90%);
+}
+a{color:inherit;text-decoration:none}
+button{font:inherit}
+.container{width:min(1120px,calc(100% - 34px));margin:auto}
+.orb{
+  position:fixed;
+  width:300px;height:300px;
+  border-radius:50%;
+  filter:blur(100px);
+  opacity:.18;
+  pointer-events:none;
+  z-index:-1;
+  animation:float 10s ease-in-out infinite alternate;
+}
+.orb.one{background:var(--purple);top:15%;right:-170px}
+.orb.two{background:var(--cyan);bottom:5%;left:-170px;animation-delay:-5s}
+@keyframes float{to{transform:translate(35px,-25px) scale(1.15)}}
+
+header{
+  position:sticky;
+  top:12px;
+  z-index:20;
+  padding:0 12px;
+  margin-top:12px;
+}
+nav{
+  max-width:1120px;
+  margin:auto;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:15px;
+  padding:12px 17px;
+  border:1px solid var(--border);
+  border-radius:20px;
+  background:#0c1022d9;
+  backdrop-filter:blur(22px);
+  box-shadow:0 15px 45px #0003;
+}
+.brand{display:flex;align-items:center;gap:10px}
+.logo{
+  display:grid;place-items:center;
+  width:43px;height:43px;
+  border-radius:14px;font-size:25px;
+  background:linear-gradient(135deg,var(--purple),#5d69ff,var(--cyan));
+  box-shadow:0 0 25px #a855f733;
+}
+.brand-name{font-size:21px}
+.brand-name small{
+  display:block;
+  font:10px Tahoma,sans-serif;
+  color:var(--muted);
+  margin-top:4px;
+}
+.nav-links{display:flex;gap:22px}
+.nav-links a{color:#c5cbe1;transition:.25s}
+.nav-links a:hover,.nav-links a.current{color:var(--cyan)}
+.nav-cta{
+  padding:10px 17px;
+  border-radius:12px;
+  background:linear-gradient(120deg,#9347f7,#586bff);
+  box-shadow:0 0 22px #9255ff26;
+}
+.menu{
+  display:none;
+  border:1px solid var(--border);
+  background:#ffffff08;
+  color:white;
+  border-radius:12px;
+  padding:7px 12px;
+  font-size:22px;
+  cursor:pointer;
+}
+
+.hero{
+  padding:92px 0 55px;
+  text-align:center;
+}
+.badge{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding:8px 15px;
+  border-radius:40px;
+  border:1px solid #a855f74c;
+  background:#a855f710;
+  color:#d8c0ff;
+  margin-bottom:23px;
+  animation:fadeDown .8s both;
+}
+.dot{
+  width:8px;height:8px;border-radius:50%;
+  background:#5dffc2;
+  box-shadow:0 0 12px #5dffc2;
+}
+.hero h1{
+  font-size:clamp(43px,8vw,78px);
+  line-height:1.35;
+  margin-bottom:17px;
+  animation:fadeUp .8s .1s both;
+}
+.gradient{
+  background:linear-gradient(100deg,#fff,#c6a0ff,var(--cyan),#ff8bd8);
+  background-size:250% auto;
+  color:transparent;
+  -webkit-background-clip:text;
+  background-clip:text;
+  animation:gradient 6s linear infinite;
+}
+@keyframes gradient{to{background-position:250% center}}
+.hero p{
+  max-width:760px;
+  margin:auto;
+  color:var(--muted);
+  font:15px/2.3 Tahoma,sans-serif;
+  animation:fadeUp .8s .2s both;
+}
+.hero-buttons{
+  display:flex;justify-content:center;flex-wrap:wrap;
+  gap:12px;margin-top:27px;
+}
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:9px;
+  padding:12px 22px;
+  border:1px solid var(--border);
+  border-radius:14px;
+  transition:.25s;
+  cursor:pointer;
+}
+.btn.primary{
+  background:linear-gradient(120deg,#9347f7,#586bff);
+  border:0;
+  box-shadow:0 10px 30px #9255ff2b;
+}
+.btn.secondary{background:#ffffff07}
+.btn:hover{transform:translateY(-4px);box-shadow:0 12px 30px #0003}
+
+.section{padding:45px 0 80px}
+.section-title{text-align:center;margin-bottom:32px}
+.section-title small{color:var(--cyan);font-size:15px}
+.section-title h2{font-size:clamp(30px,5vw,44px);margin-top:5px}
+.section-title p{
+  color:var(--muted);
+  font:14px/2 Tahoma,sans-serif;
+  margin:8px auto 0;
+  max-width:670px;
+}
+
+.feature-grid{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:18px;
+}
+.feature{
+  position:relative;
+  overflow:hidden;
+  padding:24px;
+  min-height:220px;
+  border:1px solid var(--border);
+  border-radius:23px;
+  background:linear-gradient(145deg,#ffffff0b,#ffffff03);
+  backdrop-filter:blur(15px);
+  transition:transform .35s,border-color .35s,box-shadow .35s;
+}
+.feature::before{
+  content:"";
+  position:absolute;
+  width:130px;height:130px;
+  top:-75px;left:-65px;
+  border-radius:50%;
+  background:var(--glow,#a855f7);
+  filter:blur(65px);
+  opacity:.28;
+  transition:.35s;
+}
+.feature:hover{
+  transform:translateY(-7px);
+  border-color:#a855f755;
+  box-shadow:0 20px 45px #0003;
+}
+.feature:hover::before{opacity:.6;transform:scale(1.3)}
+.feature-icon{
+  position:relative;
+  width:57px;height:57px;
+  display:grid;place-items:center;
+  font-size:28px;
+  border-radius:17px;
+  border:1px solid #ffffff14;
+  background:linear-gradient(135deg,#a855f72c,#41e7ff15);
+  margin-bottom:16px;
+  transition:transform .35s;
+}
+.feature:hover .feature-icon{transform:rotate(-7deg) scale(1.08)}
+.feature h3{font-size:24px;margin-bottom:8px;position:relative}
+.feature p{color:var(--muted);font:13px/2.1 Tahoma,sans-serif;position:relative}
+.tag{
+  display:inline-block;
+  margin-top:14px;
+  padding:5px 10px;
+  border-radius:9px;
+  background:#ffffff08;
+  border:1px solid #ffffff0e;
+  color:#c8cde4;
+  font-size:12px;
+}
+
+.highlight{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:25px;
+  align-items:center;
+  padding:30px;
+  border:1px solid var(--border);
+  border-radius:27px;
+  background:linear-gradient(120deg,#a855f70c,#41e7ff08);
+  margin-top:27px;
+}
+.highlight h3{font-size:31px;margin-bottom:12px}
+.highlight p{color:var(--muted);font:14px/2.2 Tahoma,sans-serif}
+.highlight-art{
+  min-height:230px;
+  display:grid;place-items:center;
+  border-radius:20px;
+  background:radial-gradient(circle,#a855f735,transparent 65%),#ffffff04;
+  overflow:hidden;
+  position:relative;
+}
+.highlight-art span{
+  font-size:90px;
+  filter:drop-shadow(0 0 25px #a855f766);
+  animation:bob 4s ease-in-out infinite;
+}
+.highlight-art::before,.highlight-art::after{
+  content:"";
+  position:absolute;
+  width:170px;height:170px;
+  border:1px solid #ffffff25;
+  border-radius:50%;
+  animation:spin 18s linear infinite;
+}
+.highlight-art::after{
+  width:230px;height:230px;
+  border-style:dashed;
+  animation-direction:reverse;
+}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes bob{50%{transform:translateY(-12px) rotate(-4deg)}}
+
+.roadmap{display:grid;gap:13px;max-width:850px;margin:auto}
+.roadmap-item{
+  display:flex;align-items:flex-start;gap:16px;
+  padding:20px;
+  border:1px solid var(--border);
+  border-radius:19px;
+  background:#ffffff05;
+  transition:.3s;
+}
+.roadmap-item:hover{border-color:#41e7ff44;transform:translateX(-4px)}
+.roadmap-icon{
+  flex:0 0 46px;height:46px;
+  display:grid;place-items:center;
+  border-radius:14px;
+  background:#a855f71c;
+  font-size:23px;
+}
+.roadmap-item h3{font-size:21px;margin-bottom:4px}
+.roadmap-item p{font:13px/2 Tahoma,sans-serif;color:var(--muted)}
+.status{
+  display:inline-block;
+  margin-top:7px;
+  border-radius:8px;
+  padding:4px 9px;
+  background:#ffffff08;
+  color:#c8cde4;
+  font-size:12px;
+}
+.cta{
+  padding:43px 20px;
+  text-align:center;
+  border:1px solid #a855f744;
+  border-radius:27px;
+  background:radial-gradient(ellipse at 50% 100%,#a855f71e,transparent 65%),#ffffff04;
+}
+.cta h2{font-size:clamp(29px,5vw,42px);margin-bottom:10px}
+.cta p{color:var(--muted);font:14px/2 Tahoma,sans-serif;margin-bottom:22px}
+
+footer{
+  padding:25px 0;
+  border-top:1px solid #ffffff12;
+  text-align:center;
+  color:var(--muted);
+  font:12px/2 Tahoma,sans-serif;
+}
+footer strong{
+  display:block;color:white;
+  font:22px "Lalezar",sans-serif;
+  margin-bottom:5px;
+}
+.reveal{
+  opacity:0;transform:translateY(22px);
+  transition:opacity .7s,transform .7s;
+}
+.reveal.visible{opacity:1;transform:translateY(0)}
+@keyframes fadeUp{
+  from{opacity:0;transform:translateY(22px)}
+  to{opacity:1;transform:translateY(0)}
+}
+@keyframes fadeDown{
+  from{opacity:0;transform:translateY(-15px)}
+  to{opacity:1;transform:translateY(0)}
+}
+
+@media(max-width:900px){
+  .feature-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(max-width:760px){
+  .menu{display:block}
+  .nav-cta{display:none}
+  .nav-links{
+    display:none;
+    position:absolute;
+    top:calc(100% + 8px);
+    left:12px;right:12px;
+    flex-direction:column;
+    gap:0;padding:10px;
+    border:1px solid var(--border);
+    border-radius:17px;
+    background:#0c1022f5;
+    backdrop-filter:blur(20px);
+  }
+  .nav-links.open{display:flex}
+  .nav-links a{padding:12px;border-radius:10px}
+  .nav-links a:hover{background:#ffffff08}
+  .hero{padding:70px 0 40px}
+  .highlight{grid-template-columns:1fr;padding:20px}
+  .highlight-art{grid-row:1;min-height:190px}
+  .highlight-art span{font-size:75px}
+}
+@media(max-width:560px){
+  .feature-grid{grid-template-columns:1fr}
+  .feature{min-height:0;padding:22px}
+  .section{padding:35px 0 60px}
+  .hero h1{font-size:clamp(38px,11vw,56px)}
+  .hero p{font-size:13px}
+  .roadmap-item{padding:15px;gap:12px}
+  .roadmap-icon{flex-basis:40px;height:40px}
+}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{
+    animation-duration:.01ms!important;
+    animation-iteration-count:1!important;
+    scroll-behavior:auto!important;
+    transition-duration:.01ms!important;
+  }
+}
+</style>
+</head>
+
+<body>
+<div class="orb one"></div>
+<div class="orb two"></div>
+
+<header>
+  <nav>
+    <a class="brand" href="index.html">
+      <span class="logo">ج</span>
+      <span class="brand-name">استودیو جبارفر<small>JABARFAR STUDIO</small></span>
+    </a>
+
+    <div class="nav-links" id="navLinks">
+      <a href="index.html">خانه</a>
+      <a href="index.html#games">بازی‌ها</a>
+      <a href="about.html">درباره ما</a>
+      <a href="features.html" class="current">امکانات</a>
+    </div>
+
+    <a class="nav-cta" href="index.html#games">🎮 دیدن بازی‌ها</a>
+    <button class="menu" id="menuBtn" aria-label="باز کردن منو" aria-expanded="false">☰</button>
+  </nav>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="container">
+      <div class="badge"><span class="dot"></span> امکانات استودیو جبارفر</div>
+      <h1>یک خانه برای همه<br><span class="gradient">بازی‌های جذاب!</span></h1>
+      <p>
+        اینجا امکاناتی رو می‌بینی که برای دسترسی راحت‌تر به بازی‌ها و آشنایی با پروژه‌های استودیو در نظر گرفته شده.
+        هدف ما ساختن یک تجربه ساده، زیبا و جذاب در موبایل، تبلت و کامپیوتره.
+      </p>
+      <div class="hero-buttons">
+        <a href="#all-features" class="btn primary">✨ کشف امکانات</a>
+        <a href="index.html#games" class="btn secondary">🎮 رفتن به بازی‌ها</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="all-features">
+    <div class="container">
+      <div class="section-title reveal">
+        <small>✦ STUDIO FEATURES ✦</small>
+        <h2>امکانات <span class="gradient">اصلی سایت</span></h2>
+        <p>ویژگی‌هایی برای پیدا کردن بازی‌ها، دسترسی به نسخه‌های موجود و دنبال‌کردن پروژه‌های آینده.</p>
+      </div>
+
+      <div class="feature-grid">
+        <article class="feature reveal" style="--glow:#a855f7">
+          <div class="feature-icon">🎮</div>
+          <h3>مجموعه بازی‌ها</h3>
+          <p>بازی‌های استودیو در یک صفحه نمایش داده می‌شن تا بتونی از همون‌جا وارد نسخه منتشرشده بشی.</p>
+          <span class="tag">دسترسی سریع</span>
+        </article>
+
+        <article class="feature reveal" style="--glow:#41e7ff">
+          <div class="feature-icon">🔎</div>
+          <h3>دسته‌بندی بازی‌ها</h3>
+          <p>با فیلترهای موجود می‌تونی بازی‌ها رو بر اساس پلتفرم یا وضعیت انتشار مرتب کنی.</p>
+          <span class="tag">فیلتر بازی‌ها</span>
+        </article>
+
+        <article class="feature reveal" style="--glow:#ff4fba">
+          <div class="feature-icon">📱</div>
+          <h3>طراحی واکنش‌گرا</h3>
+          <p>صفحه‌ها برای اندازه‌های مختلف نمایشگر طراحی شدن تا روی گوشی، تبلت و کامپیوتر قابل استفاده باشن.</p>
+          <span class="tag">موبایل و دسکتاپ</span>
+        </article>
+
+        <article class="feature reveal" style="--glow:#ffbd59">
+          <div class="feature-icon">✨</div>
+          <h3>انیمیشن‌های جذاب</h3>
+          <p>افکت‌های نور، پس‌زمینه‌های رنگی، کارت‌های متحرک و حرکت‌های نرم به ظاهر سایت جان می‌دن.</p>
+          <span class="tag">طراحی مدرن</span>
+        </article>
+
+        <article class="feature reveal" style="--glow:#42ffb0">
+          <div class="feature-icon">🚀</div>
+          <h3>معرفی پروژه‌های آینده</h3>
+          <p>پروژه‌هایی که هنوز آماده انتشار نیستن با وضعیت مناسب معرفی می‌شن تا از وجودشون باخبر باشی.</p>
+          <span class="tag">پروژه‌های آینده</span>
+        </article>
+
+        <article class="feature reveal" style="--glow:#7286ff">
+          <div class="feature-icon">🌐</div>
+          <h3>دسترسی به نسخه وب</h3>
+          <p>برای بازی‌هایی که نسخه وب دارن، لینک مستقیم قرار داده شده تا با یک کلیک وارد بازی بشی.</p>
+          <span class="tag">لینک مستقیم</span>
+        </article>
+
+        <article class="feature reveal" style="--glow:#ff70c8">
+          <div class="feature-icon">📣</div>
+          <h3>معرفی نسخه‌های جدید</h3>
+          <p>این وب‌سایت می‌تونه محل معرفی نسخه‌های تازه و لینک‌های رسمی پروژه‌های منتشرشده باشه.</p>
+          <span class="tag">اطلاع‌رسانی</span>
+        </article>
+
+        <article class="feature reveal" style="--glow:#41e7ff">
+          <div class="feature-icon">🧭</div>
+          <h3>صفحه‌های جداگانه</h3>
+          <p>بخش‌هایی مانند خانه، درباره ما و امکانات صفحه اختصاصی خودشون رو دارن تا پیدا کردن اطلاعات ساده‌تر باشه.</p>
+          <span class="tag">ساختار منظم</span>
+        </article>
+
+        <article class="feature reveal" style="--glow:#a855f7">
+          <div class="feature-icon">⚡</div>
+          <h3>سبک و ساده</h3>
+          <p>سایت برای نمایش محتوا به سرور اختصاصی یا ثبت‌نام اجباری نیاز نداره و صفحاتش به‌صورت مستقیم باز می‌شن.</p>
+          <span class="tag">استفاده آسان</span>
+        </article>
+      </div>
+
+      <div class="highlight reveal">
+        <div>
+          <h3>اولین قدم: <span class="gradient">شعرشو</span> 🎤</h3>
+          <p>
+            شعرشو اولین بازی معرفی‌شده در استودیو جبارفره.
+            نسخه وبش آماده استفاده است و نسخه اپلیکیشنش به‌زودی معرفی می‌شه.
+            برای شروع، وارد صفحه بازی شو و تجربه‌اش کن.
+          </p>
+          <a class="btn primary" style="margin-top:20px"
+             href="https://amirhosseinjabarfar-art.github.io/sheersho/"
+             target="_blank" rel="noopener noreferrer">▶ اجرای شعرشو</a>
+        </div>
+        <div class="highlight-art"><span>🎤</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-title reveal">
+        <small>✦ WHAT'S NEXT ✦</small>
+        <h2>چه چیزهایی می‌تونن <span class="gradient">اضافه بشن؟</span></h2>
+        <p>این‌ها ایده‌هایی برای توسعه‌های احتمالی آینده هستن و هنوز به‌عنوان قابلیت فعال معرفی نمی‌شن.</p>
+      </div>
+
+      <div class="roadmap">
+        <article class="roadmap-item reveal">
+          <div class="roadmap-icon">🆕</div>
+          <div>
+            <h3>بخش تازه‌ترین انتشارها</h3>
+            <p>نمایش بازی‌هایی که به‌تازگی منتشر شده‌اند، همراه با تاریخ انتشار و شماره نسخه.</p>
+            <span class="status">ایده پیشنهادی</span>
+          </div>
+        </article>
+
+        <article class="roadmap-item reveal">
+          <div class="roadmap-icon">🖼️</div>
+          <div>
+            <h3>تصاویر و تریلر بازی‌ها</h3>
+            <p>صفحه اختصاصی برای هر بازی، شامل تصاویر، معرفی، راهنمای شروع و ویدیوی معرفی در صورت وجود.</p>
+            <span class="status">ایده پیشنهادی</span>
+          </div>
+        </article>
+
+        <article class="roadmap-item reveal">
+          <div class="roadmap-icon">📝</div>
+          <div>
+            <h3>تاریخچه تغییرات</h3>
+            <p>ثبت تغییرات هر نسخه، قابلیت‌های جدید و اصلاحات انجام‌شده برای بازی‌ها.</p>
+            <span class="status">ایده پیشنهادی</span>
+          </div>
+        </article>
+
+        <article class="roadmap-item reveal">
+          <div class="roadmap-icon">⭐</div>
+          <div>
+            <h3>علاقه‌مندی‌ها</h3>
+            <p>امکان نشان‌کردن بازی‌های محبوب در مرورگر دستگاه کاربر برای دسترسی سریع‌تر در مراجعه بعدی.</p>
+            <span class="status">ایده پیشنهادی</span>
+          </div>
+        </article>
+
+        <article class="roadmap-item reveal">
+          <div class="roadmap-icon">💬</div>
+          <div>
+            <h3>ارسال پیشنهاد و گزارش مشکل</h3>
+            <p>ایجاد راه ارتباطی برای ارسال پیشنهاد درباره بازی‌ها یا گزارش مشکلات احتمالی.</p>
+            <span class="status">ایده پیشنهادی</span>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:0">
+    <div class="container">
+      <div class="cta reveal">
+        <h2>وقتشه وارد دنیای بازی‌ها بشی! 🎮</h2>
+        <p>بازی‌های منتشرشده رو ببین و پروژه موردعلاقه‌ات رو انتخاب کن.</p>
+        <a href="index.html#games" class="btn primary">🚀 مشاهده بازی‌ها</a>
+        <a href="about.html" class="btn secondary">درباره استودیو</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="container">
+    <strong>استودیو جبارفر</strong>
+    دنیای بازی‌های خلاقانه
+    <br>
+    © <span id="year"></span> تمامی حقوق محفوظ است.
+  </div>
+</footer>
+
+<script>
+(() => {
+  const menuBtn = document.getElementById("menuBtn");
+  const navLinks = document.getElementById("navLinks");
+
+  menuBtn.addEventListener("click", () => {
+    const opened = navLinks.classList.toggle("open");
+    menuBtn.setAttribute("aria-expanded", String(opened));
+    menuBtn.textContent = opened ? "×" : "☰";
+  });
+
+  navLinks.querySelectorAll("a").forEach(link => {
+    link.addEventListener("click", () => {
+      navLinks.classList.remove("open");
+      menuBtn.setAttribute("aria-expanded", "false");
+      menuBtn.textContent = "☰";
+    });
+  });
+
+  document.getElementById("year").textContent = new Date().getFullYear();
+
+  const items = document.querySelectorAll(".reveal");
+
+  if ("IntersectionObserver" in window) {
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    items.forEach(item => observer.observe(item));
+  } else {
+    items.forEach(item => item.classList.add("visible"));
+  }
+})();
+</script>
+</body>
+</html>
